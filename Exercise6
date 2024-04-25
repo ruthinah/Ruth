@@ -1,0 +1,76 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <algorith>
+using namespace std;
+//function to count vawel in a string
+
+int countVowels(const string& str){
+    int count = 0;
+    for(char c :str){
+        if(string("AEIOUaeiou").find(c)!= string::npos){
+            count++;
+        }
+    }
+    return count;
+}
+    int countWords(const string& str){
+        int count = 0;
+        for(char c:str){
+            if(string("AEIOUaeiou").find(c)!=string::npos){
+              count++;  
+            }
+        }
+        return count;
+        }  
+        istringstream iss(str);
+        string word;
+        while (iss>>word){
+            count++;
+        }
+        return count;
+    }
+    //function to reverse a string
+    string reverseString(const string& str){
+        string reversed =str;
+        reverse(reversed.begin(),reversed.end());
+        return reversed;
+    }
+    //function to capitalize the Second Letter of each word in a string
+    string capitalizeSecondLetter(const string& str){
+        string result = str;
+        for(size_t i =0;i< result.length();i++){
+            if(i==0|| result[i-1] == ''){
+                if(isalpha(result[i])){
+                    result[i] =toupper(result[i]);
+                }
+                }
+
+            }
+            return result; 
+        }
+    
+int main(){
+    //open the text file
+    ifstream inputFile("textfile.text");
+    if(!inputFile.is_open()){
+        cout<<"Error opening file."<<endl;
+        return 1;
+    }
+    string fileData;
+    getline(inputFile,fileData);
+    inputFile.close();
+    int vowelCount = countVowels(fileData);
+    cout<<"Number of vowels:";
+    cout<<vowelCount<<endl;
+    int wordCount = countWords(fileData);
+    cout<<"Number of words:"<<wordCount<<wordCount<<endl;
+    string reversed = reverseString(fileData);
+    cout<<"Reversed statement:"<<reversed<<endl;
+    string capitalised = capitalizeSecondLetter(fileData);
+    cout<<"Capitalized second letters:"<<capitalized<<endl;
+    return 0;
+}
+
+
